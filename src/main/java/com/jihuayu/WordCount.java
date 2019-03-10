@@ -1,18 +1,19 @@
 package com.jihuayu;
 
 import com.jihuayu.core.api.Plugin;
+import com.jihuayu.core.api.event.ReadyEvent;
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.*;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class WordCount {
     public static Map<String,Plugin> pluginMap = new HashMap<>();
+
     public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
         loadJar("./libs");
         File dir = new File("libs");
@@ -25,8 +26,13 @@ public class WordCount {
             Class<?> clazz = Class.forName(getFileNameNoEx(i.getName()));
             if (Plugin.class.isAssignableFrom(clazz))
                 instance = (Plugin) clazz.newInstance();
-            if(instance!=null)
-                pluginMap.put("-"+instance.getCommandName(),instance);
+            if(instance!=null) {
+                if(instance.getCommandName()==null){
+//                    instance.loadCommand(new String[]{});
+                    continue;
+                }
+                pluginMap.put("-" + instance.getCommandName(), instance);
+            }
         }
         if(args.length==0){
             if(pluginMap.containsKey("-")){
@@ -40,6 +46,8 @@ public class WordCount {
                 }
             }
         }
+        new WordCount();
+        EventBus.getDefault().post(new ReadyEvent());
     }
     private static void loadJar(String jarPath) {
         File jarFile = new File(jarPath);

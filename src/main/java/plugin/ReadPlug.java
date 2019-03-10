@@ -5,9 +5,10 @@ import com.jihuayu.core.api.Plugin;
 import java.util.List;
 
 public class ReadPlug implements Plugin {
+    public String in;
     @Override
     public void getCommandUsage(List<String> info) {
-        info.add("hello");
+        info.add("<file>:read from file");
     }
 
     @Override

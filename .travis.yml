@@ -2,15 +2,7 @@ language: java
 
 jdk: oraclejdk8
 
-matrix:
-  include:
-    - os: osx
-      install:
-        - gradle assemble
-      script:
-        - gradle build
-    - os: windows
-      install:
-        - gradle assemble
-      script:
-        - gradle build
+  install:
+    - gradle assemble
+  script:
+    - gradle build

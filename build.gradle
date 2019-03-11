@@ -2,7 +2,7 @@ apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'application'
 apply plugin: 'java'
 
-mainClassName = "com.jihuayu.WordCount"
+mainClassName = "com.jihuayu.wordcount.WordCount"
 
 group 'com.jihuayu'
 version '1.0-SNAPSHOT'
@@ -13,7 +13,6 @@ targetCompatibility = "1.8"
 archivesBaseName = "WordCount"
 
 repositories {
-    maven { url 'https://jitpack.io' }
     mavenCentral()
 }
 

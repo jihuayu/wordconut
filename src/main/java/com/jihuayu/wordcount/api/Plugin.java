@@ -1,4 +1,4 @@
-package com.jihuayu.core.api;
+package com.jihuayu.wordcount.api;
 
 import java.util.List;
 

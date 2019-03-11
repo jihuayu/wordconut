@@ -1,20 +1,19 @@
-package plugin;
-
-import com.jihuayu.core.api.Plugin;
-import com.jihuayu.core.api.event.ReadEvent;
-import com.jihuayu.core.api.event.ReadyEvent;
+import com.jihuayu.wordcount.api.Plugin;
+import com.jihuayu.wordcount.api.event.ReadOverEvent;
+import com.jihuayu.wordcount.api.event.WriteEvent;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
-public class ReadyPlug implements Plugin {
-    public ReadyPlug(){
+public class WritePlug implements Plugin {
+    public WritePlug(){
         EventBus.getDefault().register(this);
     }
     @Override
     public void getCommandUsage(List<String> info) {
+
     }
 
     @Override
@@ -27,7 +26,11 @@ public class ReadyPlug implements Plugin {
 
     }
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(ReadyEvent event){
-        System.out.println(11111121);
+    public void onMessageEvent(WriteEvent event){
+        System.out.println(event.getText());
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEven1t(ReadOverEvent event){
+        System.out.println("end");
     }
 }

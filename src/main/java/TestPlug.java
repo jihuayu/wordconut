@@ -1,6 +1,4 @@
-package plugin;
-
-import com.jihuayu.core.api.Plugin;
+import com.jihuayu.wordcount.api.Plugin;
 
 import java.util.List;
 

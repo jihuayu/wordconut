@@ -1,4 +1,4 @@
-package com.jihuayu.core.api.event;
+package com.jihuayu.wordcount.api.event;
 
 public class WriteEvent {
     private String Path;

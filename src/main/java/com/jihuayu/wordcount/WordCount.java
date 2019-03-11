@@ -1,7 +1,7 @@
-package com.jihuayu;
+package com.jihuayu.wordcount;
 
-import com.jihuayu.core.api.Plugin;
-import com.jihuayu.core.api.event.ReadyEvent;
+import com.jihuayu.wordcount.api.Plugin;
+import com.jihuayu.wordcount.api.event.ReadyEvent;
 import org.greenrobot.eventbus.EventBus;
 
 import java.io.*;
@@ -28,7 +28,6 @@ public class WordCount {
                 instance = (Plugin) clazz.newInstance();
             if(instance!=null) {
                 if(instance.getCommandName()==null){
-//                    instance.loadCommand(new String[]{});
                     continue;
                 }
                 pluginMap.put("-" + instance.getCommandName(), instance);

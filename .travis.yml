@@ -4,7 +4,9 @@ jdk: oraclejdk8
 
 install:
   - chmod +x gradlew
-  - gradle assemble
+  - ./gradlew assemble
 script:
   - chmod +x gradlew
-  - gradle build
+  - ./gradlew build
+  - java -jar WordCount-1.0-SNAPSHOT-all.jar
+  - java -jar WordCount-1.0-SNAPSHOT-all.jar -r test.txt

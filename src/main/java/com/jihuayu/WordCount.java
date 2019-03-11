@@ -20,7 +20,7 @@ public class WordCount {
         if(!dir.exists()){
             dir.mkdir();
         }
-        for(File i  :  dir.listFiles()) {
+        for(File i : dir.listFiles()) {
             if(i.isDirectory())continue;
             Plugin instance = null;
             Class<?> clazz = Class.forName(getFileNameNoEx(i.getName()));

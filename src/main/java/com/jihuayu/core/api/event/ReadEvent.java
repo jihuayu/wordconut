@@ -12,7 +12,8 @@ public class ReadEvent extends Event{
         return text;
     }
 
-    public void setText(String text) {
+    public ReadEvent setText(String text) {
         this.text = text;
+        return this;
     }
 }

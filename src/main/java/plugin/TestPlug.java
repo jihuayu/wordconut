@@ -4,7 +4,7 @@ import com.jihuayu.core.api.Plugin;
 
 import java.util.List;
 
-public class TestPlug1 implements Plugin {
+public class TestPlug implements Plugin {
     @Override
     public void getCommandUsage(List<String> info) {
         info.add("this is a test");

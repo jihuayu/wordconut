@@ -8,7 +8,10 @@ public class WriteEvent {
         Path = path;
         this.text = text;
     }
-
+    public WriteEvent(String text) {
+        Path = "./out.txt";
+        this.text = text;
+    }
     public String getPath() {
         return Path;
     }

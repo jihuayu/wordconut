@@ -14,6 +14,7 @@ public class ReadyPlug implements Plugin {
     }
     @Override
     public void getCommandUsage(List<String> info) {
+        //dont need
     }
 
     @Override
@@ -23,7 +24,8 @@ public class ReadyPlug implements Plugin {
 
     @Override
     public void doCommand(String[] args) {
-        //do need
+        //dont need
+
     }
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(ReadyEvent event){

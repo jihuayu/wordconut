@@ -15,7 +15,8 @@ public class WritePlug implements Plugin {
     }
     @Override
     public void getCommandUsage(List<String> info) {
-        //do need
+        //dont need
+
     }
 
     @Override
@@ -25,7 +26,8 @@ public class WritePlug implements Plugin {
 
     @Override
     public void doCommand(String[] args) {
-        //do need
+        //dont need
+
     }
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(WriteEvent event){

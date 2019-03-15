@@ -15,7 +15,7 @@ public class WritePlug implements Plugin {
     }
     @Override
     public void getCommandUsage(List<String> info) {
-
+        //do need
     }
 
     @Override

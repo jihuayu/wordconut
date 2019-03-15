@@ -1,3 +1,5 @@
+package plugin;
+
 import com.jihuayu.wordcount.api.Plugin;
 import com.jihuayu.wordcount.api.event.ReadEvent;
 import com.jihuayu.wordcount.api.event.WriteEvent;
@@ -8,14 +10,13 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.List;
 
 public class CountPlug implements Plugin {
-    private int charNum;
     public CountPlug(){
         EventBus.getDefault().register(this);
     }
 
     @Override
     public void getCommandUsage(List<String> info) {
-
+        //do need
     }
 
     @Override
@@ -24,8 +25,8 @@ public class CountPlug implements Plugin {
     }
 
     @Override
-    public void loadCommand(String[] args) {
-
+    public void doCommand(String[] args) {
+        //do need
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

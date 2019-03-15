@@ -1,3 +1,5 @@
+package plugin;
+
 import com.jihuayu.wordcount.WordCount;
 import com.jihuayu.wordcount.api.Plugin;
 
@@ -16,9 +18,9 @@ public class HelpPlug implements Plugin {
     }
 
     @Override
-    public void loadCommand(String[] args) {
+    public void doCommand(String[] args) {
         for(String i : WordCount.pluginMap.keySet()){
-            if(i.equals("-"))continue;
+            if("-".equals(i))continue;
             System.out.println(i+"\n");
             List<String> info = new ArrayList<>();
             WordCount.pluginMap.get(i).getCommandUsage(info);

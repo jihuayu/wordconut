@@ -1,3 +1,5 @@
+package plugin;
+
 import com.jihuayu.wordcount.api.Plugin;
 import com.jihuayu.wordcount.api.event.ReadOverEvent;
 import com.jihuayu.wordcount.api.event.WriteEvent;
@@ -22,8 +24,8 @@ public class WritePlug implements Plugin {
     }
 
     @Override
-    public void loadCommand(String[] args) {
-
+    public void doCommand(String[] args) {
+        //do need
     }
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(WriteEvent event){

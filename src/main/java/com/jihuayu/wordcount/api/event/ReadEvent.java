@@ -3,7 +3,6 @@ package com.jihuayu.wordcount.api.event;
 public class ReadEvent extends Event{
     private String text;
 
-
     public ReadEvent(String text) {
         this.text = text;
     }

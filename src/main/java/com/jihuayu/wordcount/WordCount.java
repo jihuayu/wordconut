@@ -14,7 +14,7 @@ import java.util.Map;
 public class WordCount {
     public static Map<String,Plugin> pluginMap = new HashMap<>();
 
-    public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+    public static void main(String[] args) {
         loadJar("./libs");
         File dir = new File("libs");
         if(!dir.exists()){
@@ -23,9 +23,21 @@ public class WordCount {
         for(File i : dir.listFiles()) {
             if(i.isDirectory())continue;
             Plugin instance = null;
-            Class<?> clazz = Class.forName(getFileNameNoEx(i.getName()));
-            if (Plugin.class.isAssignableFrom(clazz))
-                instance = (Plugin) clazz.newInstance();
+            Class<?> clazz = null;
+            try {
+                clazz = Class.forName(getFileNameNoEx(i.getName()));
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+                return ;
+            }
+            if (Plugin.class.isAssignableFrom(clazz)) {
+                try {
+                    instance = (Plugin) clazz.newInstance();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return;
+                }
+            }
             if(instance!=null) {
                 if(instance.getCommandName()==null){
                     continue;
@@ -33,16 +45,12 @@ public class WordCount {
                 pluginMap.put("-" + instance.getCommandName(), instance);
             }
         }
-        if(args.length==0){
-            if(pluginMap.containsKey("-")){
-                pluginMap.get("-").doCommand(new String[]{});
-            }
+        if(args.length==0&&(pluginMap.containsKey("-"))){
+            pluginMap.get("-").doCommand(new String[]{});
         }
         for(int i=0;i<args.length;i++){
-            if(args[i].startsWith("-")){
-                if(pluginMap.containsKey(args[i])){
+            if(args[i].startsWith("-")&&pluginMap.containsKey(args[i])){
                     pluginMap.get(args[i]).doCommand(args[++i].split(";"));
-                }
             }
         }
         new WordCount();
@@ -68,9 +76,9 @@ public class WordCount {
             method.setAccessible(accessible);
         }
     }
-    private static boolean isChineseChar(char c) {
-        return String.valueOf(c).matches("[\u0000-\u007f]");
-    }
+//    private static boolean isChineseChar(char c) {
+//        return String.valueOf(c).matches("[\u0000-\u007f]");
+//    }
     private static String getFileNameNoEx(String filename) {
         if ((filename != null) && (filename.length() > 0)) {
             int dot = filename.lastIndexOf('.');

@@ -1,3 +1,5 @@
+package plugin;
+
 import com.jihuayu.wordcount.api.Plugin;
 import com.jihuayu.wordcount.api.event.ReadEvent;
 import com.jihuayu.wordcount.api.event.ReadOverEvent;
@@ -8,7 +10,6 @@ import java.io.FileReader;
 import java.util.List;
 
 public class ReadPlug implements Plugin {
-    public String in;
     @Override
     public void getCommandUsage(List<String> info) {
         info.add("<file>:read from file");
@@ -20,7 +21,7 @@ public class ReadPlug implements Plugin {
     }
 
     @Override
-    public void loadCommand(String[]args) {
+    public void doCommand(String[]args) {
         if(args.length>0){
             String str = args[0];
             FileReader fr= null;

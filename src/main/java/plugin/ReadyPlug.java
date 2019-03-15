@@ -1,3 +1,5 @@
+package plugin;
+
 import com.jihuayu.wordcount.api.Plugin;
 import com.jihuayu.wordcount.api.event.ReadyEvent;
 import org.greenrobot.eventbus.EventBus;
@@ -20,11 +22,11 @@ public class ReadyPlug implements Plugin {
     }
 
     @Override
-    public void loadCommand(String[] args) {
-
+    public void doCommand(String[] args) {
+        //do need
     }
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(ReadyEvent event){
-        System.out.println(11111121);
+        System.out.println("hello");
     }
 }
